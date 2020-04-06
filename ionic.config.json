@@ -1,0 +1,7 @@
+{
+  "name": "ionic-template-news",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "ionic-angular"
+}
