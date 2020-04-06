@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "ionic-template-news",
+  "appName": "ionic2",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
