@@ -9,11 +9,15 @@
 <ion-content [fullscreen]="true" color="dark">
   <ion-grid fixed>
     <ion-row>
-      <ion-col *ngFor="let post of posts">
+      <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+               *ngFor="let post of posts; let i = index">
         <ion-card color="dark">
           <ion-card-header>
               <ion-card-subtitle>
-                {{ post.source.name }}
+                <span class="title-1">
+                  <span class="text-primary"> {{ i + 1 }}.</span>
+                  <span class="post-source">{{ post.source.name }}</span>
+                </span>
               </ion-card-subtitle>
 
               <ion-card-title>{{ post.title }}</ion-card-title>
