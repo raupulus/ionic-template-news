@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" no-border>
   <ion-toolbar color="dark">
     <ion-title>
       Últimas Noticias
@@ -7,32 +7,5 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" color="dark">
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
-               *ngFor="let post of posts; let i = index">
-        <ion-card color="dark">
-          <ion-card-header>
-              <ion-card-subtitle>
-                <span class="title-1">
-                  <span class="text-primary"> {{ i + 1 }}.</span>
-                  <span class="post-source">{{ post.source.name }}</span>
-                </span>
-              </ion-card-subtitle>
-
-              <ion-card-title>{{ post.title }}</ion-card-title>
-          </ion-card-header>
-
-          <ion-img *ngIf="post.urlToImage"
-                   [src]="post.urlToImage"></ion-img>
-
-          <ion-card-content>
-            <p>
-              {{ post.description }}
-            </p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <app-posts [posts]="posts"></app-posts>
 </ion-content>

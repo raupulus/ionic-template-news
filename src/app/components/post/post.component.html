@@ -1,0 +1,21 @@
+<ion-card color="dark">
+  <ion-card-header>
+      <ion-card-subtitle>
+        <span class="title-1">
+          <span class="text-primary"> {{ index + 1 }}.</span>
+          <span class="post-source">{{ post.source.name }}</span>
+        </span>
+      </ion-card-subtitle>
+
+      <ion-card-title>{{ post.title }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-img *ngIf="post.urlToImage"
+            [src]="post.urlToImage"></ion-img>
+
+  <ion-card-content>
+    <p>
+      {{ post.description }}
+    </p>
+  </ion-card-content>
+</ion-card>
