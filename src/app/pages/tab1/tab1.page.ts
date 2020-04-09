@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PostsService } from '../../services/posts.service';
+import { ApiService } from '../../services/api.service';
 import { PostsCollection, Post } from 'src/app/interfaces/interfaces';
 
 @Component({
@@ -13,7 +13,7 @@ export class Tab1Page implements OnInit {
 
   posts: Post[] = [];
 
-  constructor( private PostsService: PostsService ) {
+  constructor( private PostsService: ApiService ) {
 
   }
 
