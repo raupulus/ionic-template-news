@@ -21,6 +21,11 @@ const headers = new HttpHeaders({
 export class ApiService {
 
   currentPage:number = 0;
+  
+  currentCategory:string = '';
+  
+  currentCategoryPage:number = 0;
+
 
   constructor( private http: HttpClient ) { }
 
@@ -59,8 +64,15 @@ export class ApiService {
    * @param category Recibe la categoría como string.
    */
   getPostsCategory(category: string) {
-    let query = 'top-headlines?country=us&sortBy=publishedAt&category=' + category;
-    
+    if (this.currentCategory === category) {
+      this.currentCategoryPage++;
+    } else {
+      this.currentCategoryPage = 1;
+      this.currentCategory = category;
+    }
+
+    let query = `top-headlines?country=us&sortBy=publishedAt&category=${ category }&page=${ this.currentCategoryPage }`;
+
     return this.sendQuery<PostsCollection>(query);
   }
 }

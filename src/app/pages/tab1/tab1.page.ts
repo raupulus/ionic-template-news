@@ -21,7 +21,7 @@ export class Tab1Page implements OnInit {
    * Carga los posts. Puede recibir el evento del infinity-scroll.
    * @param event Evento si ha sido llamado con infinity-scroll.
    */
-  loadPosts( event?:Event ) {
+  loadPosts( event? ) {
     this.PostsService.getAll()
       .subscribe( (resp) => {
         this.posts.push( ...resp.articles );
@@ -40,7 +40,7 @@ export class Tab1Page implements OnInit {
     this.loadPosts();
   }
 
-  loadData( event: Event ) {
+  loadData( event ) {
     this.loadPosts( event );
   }
 }

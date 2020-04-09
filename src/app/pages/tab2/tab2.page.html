@@ -19,4 +19,10 @@
 
 <ion-content color="dark">
   <app-posts [posts]="posts"></app-posts>
+
+  <ion-infinite-scroll threshold="15%" (ionInfinite)="loadData( $event )">
+    <ion-infinite-scroll-content loadingSpinner="crescent"
+                                 loadingText="Cargando más datos...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>     
 </ion-content>
