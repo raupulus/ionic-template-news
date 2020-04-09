@@ -17,11 +17,30 @@ export class Tab1Page implements OnInit {
 
   }
 
-  ngOnInit() {
+  /**
+   * Carga los posts. Puede recibir el evento del infinity-scroll.
+   * @param event Evento si ha sido llamado con infinity-scroll.
+   */
+  loadPosts( event?:Event ) {
     this.PostsService.getAll()
       .subscribe( (resp) => {
-        console.log( 'Posts:', resp );
         this.posts.push( ...resp.articles );
+
+        // Deshabilito el evento infinity-scroll si no vienen posts o se llegó al final.
+        if (resp.articles.length === 0) {
+          event.target.disabled = true;
+          event.target.complete();
+        } else if ( event ) {
+          event.target.complete();
+        }
       });
+  }
+
+  ngOnInit() {
+    this.loadPosts();
+  }
+
+  loadData( event: Event ) {
+    this.loadPosts( event );
   }
 }

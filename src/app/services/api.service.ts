@@ -20,6 +20,8 @@ const headers = new HttpHeaders({
 
 export class ApiService {
 
+  currentPage:number = 0;
+
   constructor( private http: HttpClient ) { }
 
   /**
@@ -46,7 +48,8 @@ export class ApiService {
    * Devuelve todos los posts para todas las categorías.
    */
   getAll() {
-    let query = 'top-headlines?country=us&sortBy=publishedAt';
+    this.currentPage++;
+    let query = `top-headlines?country=us&sortBy=publishedAt&page=${this.currentPage}`;
     
     return this.sendQuery<PostsCollection>(query);
   }
