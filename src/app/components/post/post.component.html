@@ -7,10 +7,11 @@
         </span>
       </ion-card-subtitle>
 
-      <ion-card-title>{{ post.title }}</ion-card-title>
+      <ion-card-title (click)="openPost()">{{ post.title }}</ion-card-title>
   </ion-card-header>
 
   <ion-img *ngIf="post.urlToImage"
+            (click)="openPost()"
             [src]="post.urlToImage"></ion-img>
 
   <ion-card-content>

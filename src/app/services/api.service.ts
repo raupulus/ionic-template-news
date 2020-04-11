@@ -11,7 +11,7 @@ const apiVersion = api.version;
 const apiPath = api.path;
 
 const headers = new HttpHeaders({
-  'X-Api-key': apiKey
+  'X-Api-key': apiKey,
 });
 
 @Injectable({
@@ -45,8 +45,7 @@ export class ApiService {
     }
 
     //console.log(route + '/' + query);
-    return this.http.get<T>(route + '/' + query, {headers});
-
+    return this.http.get<T>(route + '/' + query, { headers });
   }
 
   /**
