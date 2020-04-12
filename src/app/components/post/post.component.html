@@ -5,6 +5,14 @@
           <span class="text-primary"> {{ index + 1 }}.</span>
           <span class="post-source">{{ post.source.name }}</span>
         </span>
+
+        <div class="post-more-info">
+          <ion-button fill="clear"
+                      (click)="openPostMenu()">
+            <ion-icon slot="icon-only"
+                      name="ellipsis-vertical-sharp"></ion-icon>
+          </ion-button>
+        </div>
       </ion-card-subtitle>
 
       <ion-card-title (click)="openPost()">{{ post.title }}</ion-card-title>

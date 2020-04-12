@@ -46,3 +46,12 @@
 .post-source {
 
 }
+
+.action-sheet-dark, .action-sheet-group { 
+    background-color: var( --ion-color-dark);
+    color: #fff;
+}
+
+.action-sheet-dark ion-icon {
+    color: #fff;
+}
