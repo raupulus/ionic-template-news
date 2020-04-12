@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Post } from 'src/app/interfaces/interfaces';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ActionSheetController } from '@ionic/angular';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-post',
@@ -14,7 +15,8 @@ export class PostComponent implements OnInit {
   @Input() index: Number;
 
   constructor( private iab: InAppBrowser,
-               private actionSheetCtrl: ActionSheetController ) { }
+               private actionSheetCtrl: ActionSheetController,
+               private socialSharing: SocialSharing) { }
 
   ngOnInit() {}
 
@@ -30,7 +32,12 @@ export class PostComponent implements OnInit {
         icon: 'share',
         cssClass: 'action-sheet-dark',
         handler: () => {
-          console.log('Compartir');
+          this.socialSharing.share(
+            this.post.title,
+            this.post.source.name,
+            '',
+            this.post.url
+          );
         }
       }, {
         text: 'Añadir a Favorito',

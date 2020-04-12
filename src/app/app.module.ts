@@ -15,6 +15,12 @@ import { AppComponent } from './app.component';
 // Módulo nativo para abrir enlaces en el navegador.
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
+// Módulo nativo para compartir en redes sociales.
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+
+// Módulo para almacenar datos en el storage
+import { IonicStorageModule } from '@ionic/storage';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -23,11 +29,12 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    SocialSharing,
     InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
