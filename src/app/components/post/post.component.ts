@@ -3,6 +3,7 @@ import { Post } from 'src/app/interfaces/interfaces';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-post',
@@ -16,7 +17,8 @@ export class PostComponent implements OnInit {
 
   constructor( private iab: InAppBrowser,
                private actionSheetCtrl: ActionSheetController,
-               private socialSharing: SocialSharing) { }
+               private socialSharing: SocialSharing,
+               private localStorage: LocalStorageService) { }
 
   ngOnInit() {}
 
@@ -45,6 +47,7 @@ export class PostComponent implements OnInit {
         cssClass: 'action-sheet-dark',
         handler: () => {
           console.log('Favorito');
+          this.localStorage.savePost( this.post );
         }
       }, {
         text: 'Cancel',

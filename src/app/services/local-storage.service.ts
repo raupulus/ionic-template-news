@@ -13,8 +13,14 @@ export class LocalStorageService {
 
 
   savePost( post: Post) {
-    this.posts.unshift( post );
-    this.storage.set('favorites', post);
+    const existe = this.posts.find( p => p.title == post.title);
+
+    if (! existe) {
+      this.posts.unshift( post );
+      this.storage.set('favorites', this.posts);
+
+      //console.log(this.storage.get('favorites'));
+    }
   }
 
   loadFavorite() {
