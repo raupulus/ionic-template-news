@@ -9,10 +9,12 @@ export class LocalStorageService {
 
   posts: Post[] = [];
 
-  constructor( private storage: Storage ) { }
+  constructor( private storage: Storage ) {
+    this.loadPostsFavorite();
+   }
 
 
-  savePost( post: Post) {
+  savePostFavorite( post: Post) {
     const existe = this.posts.find( p => p.title == post.title);
 
     if (! existe) {
@@ -23,7 +25,15 @@ export class LocalStorageService {
     }
   }
 
-  loadFavorite() {
+  async loadPostsFavorite() {
+    const favorites = await this.storage.get('favorites');
 
+    console.log( 'async await fav: ', favorites);
+
+    if ( favorites ) {
+      this.posts = favorites;
+    }
+
+    return favorites;
   }
 }

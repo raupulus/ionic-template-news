@@ -47,7 +47,7 @@ export class PostComponent implements OnInit {
         cssClass: 'action-sheet-dark',
         handler: () => {
           console.log('Favorito');
-          this.localStorage.savePost( this.post );
+          this.localStorage.savePostFavorite( this.post );
         }
       }, {
         text: 'Cancel',
