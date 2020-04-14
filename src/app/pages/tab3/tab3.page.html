@@ -7,5 +7,17 @@
 </ion-header>
 
 <ion-content color="dark">
-  <app-posts [posts]="localStorage.posts"></app-posts>
+
+  <!-- En caso de no haber favoritos -->
+  <ion-slides [options]="sliderOpts"
+              *ngIf="localStorage.posts.length === 0">
+    <ion-slide>
+      <ion-label>
+        No hay favoritos agregados
+      </ion-label>
+    </ion-slide>
+  </ion-slides>
+
+  <app-posts *ngIf="localStorage.posts.length > 0"
+             [posts]="localStorage.posts"></app-posts>
 </ion-content>

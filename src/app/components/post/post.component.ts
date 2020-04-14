@@ -28,6 +28,27 @@ export class PostComponent implements OnInit {
   }
 
   async openPostMenu() {
+    if (this.localStorage.posts.find(ele => ele.title === this.post.title) ) {
+      var favorite = {
+        text: 'Borrar Favorito',
+        icon: 'trash',
+        cssClass: 'action-sheet-dark',
+        handler: () => {
+          this.localStorage.removePostFavorite( this.post );
+        }
+      };
+    } else {
+      var favorite = {
+        text: 'Añadir a Favorito',
+        icon: 'heart',
+        cssClass: 'action-sheet-dark',
+        handler: () => {
+          this.localStorage.savePostFavorite( this.post );
+        }
+      };
+    }
+
+
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [{
         text: 'Compartir',
@@ -41,21 +62,15 @@ export class PostComponent implements OnInit {
             this.post.url
           );
         }
-      }, {
-        text: 'Añadir a Favorito',
-        icon: 'heart',
-        cssClass: 'action-sheet-dark',
-        handler: () => {
-          console.log('Favorito');
-          this.localStorage.savePostFavorite( this.post );
-        }
-      }, {
+      }, 
+      favorite, 
+      {
         text: 'Cancel',
         icon: 'close',
         cssClass: 'action-sheet-dark',
         role: 'cancel',
         handler: () => {
-          console.log('Cancelar');
+          //console.log('Cancelar');
         }
       }]
     });

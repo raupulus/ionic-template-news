@@ -9,6 +9,13 @@ import { ComponentsModule } from '../../components/components.module';
 })
 export class Tab3Page {
 
+  // Opciones para el slide.
+  sliderOpts = {
+    allowSlidePrev: false,
+    allowSlideNext: false  
+  };
+
+
   constructor( public localStorage: LocalStorageService ) {
 
   }

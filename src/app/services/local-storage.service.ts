@@ -36,4 +36,9 @@ export class LocalStorageService {
 
     return favorites;
   }
+
+  async removePostFavorite( post: Post ) {
+    this.posts = this.posts.filter( p => p.title !== post.title );
+    this.storage.set( 'favorites', this.posts );
+  }
 }

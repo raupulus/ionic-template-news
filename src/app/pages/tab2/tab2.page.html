@@ -18,6 +18,7 @@
 </ion-header>
 
 <ion-content color="dark">
+
   <app-posts [posts]="posts"></app-posts>
 
   <ion-infinite-scroll threshold="15%" (ionInfinite)="loadData( $event )">
