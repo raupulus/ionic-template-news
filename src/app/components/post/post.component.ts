@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from 'src/app/interfaces/interfaces';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, Platform } from '@ionic/angular';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { LocalStorageService } from '../../services/local-storage.service';
 
@@ -18,15 +18,22 @@ export class PostComponent implements OnInit {
   constructor( private iab: InAppBrowser,
                private actionSheetCtrl: ActionSheetController,
                private socialSharing: SocialSharing,
-               private localStorage: LocalStorageService) { }
+               private localStorage: LocalStorageService,
+               private platform: Platform) { }
 
   ngOnInit() {}
 
+  /**
+   * Indico que abra con el navegador de android usando el parámetro _system.
+   * En un navegador lo abrirá en otra pestaña.
+   */
   openPost() {
-    // Indico que abra con el navegador de android usando el parámetro _system
     const browser = this.iab.create(this.post.url, '_system');
   }
 
+  /**
+   * Abre las opciones que se pueden realizar sobre un post.
+   */
   async openPostMenu() {
     if (this.localStorage.posts.find(ele => ele.title === this.post.title) ) {
       var favorite = {
@@ -48,32 +55,72 @@ export class PostComponent implements OnInit {
       };
     }
 
+    // Contiene las acciones para el ActionSheet.
+    var actions = {
+      buttons: [ 
+        favorite, 
+      ]
+    };
 
-    const actionSheet = await this.actionSheetCtrl.create({
-      buttons: [{
+    // Compruebo si puede compartir para añadir acción de compartir.
+    if ( this.canSharePost() ) {
+      actions.buttons.push({
         text: 'Compartir',
         icon: 'share',
         cssClass: 'action-sheet-dark',
         handler: () => {
-          this.socialSharing.share(
-            this.post.title,
-            this.post.source.name,
-            '',
-            this.post.url
-          );
+          this.sharePost();
         }
-      }, 
-      favorite, 
-      {
-        text: 'Cancel',
-        icon: 'close',
-        cssClass: 'action-sheet-dark',
-        role: 'cancel',
-        handler: () => {
-          //console.log('Cancelar');
-        }
-      }]
+      });
+    }
+
+    // Añado botón de cancelar.
+    actions.buttons.push({
+      text: 'Cancel',
+      icon: 'close',
+      cssClass: 'action-sheet-dark',
+      role: 'cancel',
+      handler: () => {
+        //console.log('Cancelar');
+      }
     });
+
+    console.log('Actions: ', actions);
+
+    const actionSheet = await this.actionSheetCtrl.create(actions);
     await actionSheet.present();
+  }
+
+  /**
+   * Según el dispositivo y soporte mostrará el menú para compartir
+   */
+  sharePost() {
+    console.log('0');
+
+    if ( this.platform.is('cordova') ) {
+      this.socialSharing.share(
+        this.post.title,
+        this.post.source.name,
+        '',
+        this.post.url
+      );
+    } else if ( navigator['share'] ) {
+      navigator['share']({
+          title: this.post.title,
+          text: this.post.description,
+          url: this.post.url
+      })
+        .then(() => console.log('Se ha compartido correctamente'))
+        .catch((error) => console.log('Error al compartir', error));
+    } else {
+      console.log('No está soportado ningún método para compartir');
+    }
+  }
+
+  /**
+   * Devuelve si puede compartir.
+   */
+  canSharePost() {
+      return this.platform.is('cordova') || navigator['share'];
   }
 }
