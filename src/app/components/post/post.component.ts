@@ -13,7 +13,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
 export class PostComponent implements OnInit {
 
   @Input() post: Post;
-  @Input() index: Number;
+  @Input() index;
 
   constructor( private iab: InAppBrowser,
                private actionSheetCtrl: ActionSheetController,
