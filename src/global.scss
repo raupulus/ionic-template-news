@@ -55,3 +55,8 @@
 .action-sheet-dark ion-icon {
     color: #fff;
 }
+
+// Sección en la que estamos remarcada con el color primario.
+.tab-selected {
+    color: var( --ion-color-primary );
+}
