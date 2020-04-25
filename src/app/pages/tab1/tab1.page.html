@@ -1,0 +1,17 @@
+<ion-header [translucent]="true" no-border>
+  <ion-toolbar color="dark">
+    <ion-title>
+      Últimas Noticias
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="dark">
+  <app-posts [posts]="posts"></app-posts>
+
+  <ion-infinite-scroll threshold="15%" (ionInfinite)="loadData( $event )">
+    <ion-infinite-scroll-content loadingSpinner="crescent"
+                                 loadingText="Cargando más datos...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>                                  
+</ion-content>

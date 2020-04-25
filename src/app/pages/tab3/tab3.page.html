@@ -1,0 +1,23 @@
+<ion-header [translucent]="true" no-border>
+  <ion-toolbar color="dark">
+    <ion-title>
+      Tab 3
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+
+  <!-- En caso de no haber favoritos -->
+  <ion-slides [options]="sliderOpts"
+              *ngIf="localStorage.posts.length === 0">
+    <ion-slide>
+      <ion-label>
+        No hay favoritos agregados
+      </ion-label>
+    </ion-slide>
+  </ion-slides>
+
+  <app-posts *ngIf="localStorage.posts.length > 0"
+             [posts]="localStorage.posts"></app-posts>
+</ion-content>

@@ -1,0 +1,9 @@
+{
+  "name": "ionic2",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "cc867105"
+}

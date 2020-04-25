@@ -1,0 +1,12 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+ion-segment-button {
+  background-color: var( --ion-color-dark );
+  color: #ffffff;
+}
+
+.segment-button-checked {
+  color: var( --ion-color-primary );
+}
