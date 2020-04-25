@@ -9,7 +9,7 @@ export const environment = {
 export const api = {
   key: '',
   domain: '',
-  version: '',
+  version: 'v1',
   path: ''
   
 };
