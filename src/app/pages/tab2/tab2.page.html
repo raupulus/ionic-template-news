@@ -11,8 +11,8 @@
                (ionChange)="changeCategory( $event )">
     <ion-segment-button mode="md"
                         *ngFor="let category of categories"
-                        [value]="category">
-      <ion-label text-capitalize> {{ category }}</ion-label>
+                        [value]="category.id">
+      <ion-label text-capitalize> {{ category.name }}</ion-label>
     </ion-segment-button>
   </ion-segment>
 </ion-header>

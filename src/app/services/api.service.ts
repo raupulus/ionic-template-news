@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PostsCollection } from '../interfaces/interfaces';
+import { PostsCollection, CategoriesCollection } from '../interfaces/interfaces';
 
 import { api } from '../../environments/environment';
 
@@ -21,11 +21,11 @@ const headers = new HttpHeaders({
 
 export class ApiService {
 
-  currentPage:number = 0;
-  
-  currentCategory:string = '';
-  
-  currentCategoryPage:number = 0;
+  currentPage: number = 0;
+
+  currentCategory: number = null;
+
+  currentCategoryPage: number = 0;
 
 
   constructor( private http: HttpClient ) { }
@@ -58,8 +58,8 @@ export class ApiService {
    */
   getAll() {
     this.currentPage++;
-    let query = `?&page=${this.currentPage}`;
-    
+    const query = `?&page=${this.currentPage}`;
+
     return this.sendQuery<PostsCollection>(query);
   }
 
@@ -67,7 +67,7 @@ export class ApiService {
    * Devuelve todos los posts para una categoría concreta.
    * @param category Recibe la categoría como string.
    */
-  getPostsCategory(category: string) {
+  getPostsCategory(category: number) {
     if (this.currentCategory === category) {
       this.currentCategoryPage++;
     } else {
@@ -78,5 +78,14 @@ export class ApiService {
     let query = `?&category=${ category }&page=${ this.currentCategoryPage }`;
 
     return this.sendQuery<PostsCollection>(query);
+  }
+
+  /**
+   * Devuelve todas las categorías que existan.
+   */
+  getAllCategories() {
+    const query = `?&categories=true`;
+
+    return this.sendQuery<CategoriesCollection>(query);
   }
 }

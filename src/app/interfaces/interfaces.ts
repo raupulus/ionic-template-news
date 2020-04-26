@@ -5,6 +5,13 @@ export interface PostsCollection {
     data: Post[];
 }
 
+export interface CategoriesCollection {
+    status: string;
+    results: number;
+    total_results: number;
+    data: Category[];
+}
+
 export interface Post {
     id: number;
     parent_id?: number;
