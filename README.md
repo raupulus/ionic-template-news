@@ -16,6 +16,11 @@ producción como para desarrollo.
 
 ### Agregando entornos
 
+## Añadiendo imágenes
+
+/resources/icon.png → 1024x1024px
+/resources.splash → 2732x2732
+
 ## TODO - Lista de tareas pendientes
 
 - [] En tab2.page.ts → Almacenar categorías en dispositivo local para recuperarlas sin realizar ajax,
