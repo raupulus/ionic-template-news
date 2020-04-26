@@ -31,3 +31,8 @@ npm-debug.log*
 /www
 /src/environments/environment.prod.ts
 /src/environments/environment.ts
+
+
+# Archivos ignorados por ser reemplazados obligatoriamente.
+resources/splash.png
+resources/icon.png
