@@ -36,3 +36,5 @@ npm-debug.log*
 # Archivos ignorados por ser reemplazados obligatoriamente.
 /resources/icon.png
 /resources/splash.png
+resources/icon.png
+resources/splash.png
