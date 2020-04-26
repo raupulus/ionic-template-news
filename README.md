@@ -16,3 +16,14 @@ producción como para desarrollo.
 
 ### Agregando entornos
 
+## TODO - Lista de tareas pendientes
+
+- [] En tab2.page.ts → Almacenar categorías en dispositivo local para recuperarlas sin realizar ajax,
+posteriormente se recargará el ajax para actualizar pero el usuario así tiene
+datos sin tener que esperar.
+- Implementar buscador de texto introducido por el usuario.
+- Crear menú desplegable lateral con opciones.
+- Implementar ver posts por un author concreto.
+- Añadir lupa en la cabecera.
+- Refactorizar componentes para las vistas de las páginas dejando menú y colores.
+- Mejorar diseño de las noticias incluyendo autor y categoría a la que pertenece.
