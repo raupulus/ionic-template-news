@@ -12,15 +12,26 @@ export class Tab2Page implements OnInit{
 
   @ViewChild(IonSegment, <any>{}) segment: IonSegment;
 
+
+// TODO → Convertir a objeto con id y nombre
+// TODO → Obtener categorías desde la web y cachear en dispositivo
+// TODO → Al entrar, cargar de dispositivo y tirar ajax para refrescar
+
+
   categories = [
-    'business',
-    'entertainment',
-    'general',
-    'health',
-    'sience',
-    'sports',
-    'technology'
+    '1',
+    '455',
+    '456',
+    '457',
+    '458',
+    '459',
+    '460',
+    '461',
+    '463',
   ]
+
+
+
 
   posts:Post[] = [];
 
@@ -36,10 +47,10 @@ export class Tab2Page implements OnInit{
   uploadNews( category: string, event? ) {
     this.apiService.getPostsCategory( category )
       .subscribe( resp => {
-        this.posts.push( ...resp.articles );
+        this.posts.push( ...resp.data );
 
         // Compruebo si se han traido artículos o si el evento ha terminado.
-        if (resp.articles.length === 0) {
+        if (resp.data.length === 0) {
           event.target.disabled = true;
           event.target.complete();
         } else if ( event ) {

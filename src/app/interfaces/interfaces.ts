@@ -1,21 +1,55 @@
 export interface PostsCollection {
     status: string;
-    totalResults: number;
-    articles: Post[];
+    results: number;
+    total_results: number;
+    data: Post[];
 }
 
 export interface Post {
-    source: Source;
-    author: string;
+    id: number;
+    parent_id?: number;
+    position: number;
     title: string;
     description: string;
+    content: string;
     url: string;
-    urlToImage: string;
-    publishedAt: string;
-    content?: string;
+    image: string;
+    image_type: string;
+    author: Author;
+    categories?: Category[];
+    source: Source;
+    has_enabled_comments: boolean;
+    n_comments: number;
+    created_at: string;
+    updated_at: string;
+    published_at: string;
+    slug: string;
+}
+
+export interface Author {
+    id: number;
+    name: string;
+    username: string;
+    email: string;
+    web: string;
+    url: string;
+    registered_at: string;
+}
+
+export interface Category {
+    id: number;
+    slug: string;
+    name: string;
+    description: string;
+    url: string;
 }
 
 export interface Source {
-    id?: string;
+    domain: string;
+    code: string;
     name: string;
+    home: string;
+    url: string;
+    description: string;
+    admin_email: string;
 }

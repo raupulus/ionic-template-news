@@ -13,3 +13,6 @@ esta aplicación.
 renombrando el archivo sin la palabra **example**
 - Rellenar los campos dentro de cada archivo de varibles de entorno tanto para
 producción como para desarrollo.
+
+### Agregando entornos
+

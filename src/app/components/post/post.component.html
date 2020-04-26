@@ -18,9 +18,9 @@
       <ion-card-title (click)="openPost()">{{ post.title }}</ion-card-title>
   </ion-card-header>
 
-  <ion-img *ngIf="post.urlToImage"
+  <ion-img *ngIf="post.image"
             (click)="openPost()"
-            [src]="post.urlToImage"></ion-img>
+            [src]="post.image"></ion-img>
 
   <ion-card-content>
     <p>

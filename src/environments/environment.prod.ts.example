@@ -6,5 +6,6 @@ export const api = {
   key: '',
   domain: '',
   version: 'v1',
-  path: ''
+  path: '',
+  file: ''
 };

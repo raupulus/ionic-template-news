@@ -79,7 +79,8 @@ export class PostComponent implements OnInit {
       text: 'Cancel',
       icon: 'close',
       cssClass: 'action-sheet-dark',
-      role: 'cancel',
+      // @ts-ignore
+      role: 'cancel', // tslint:disable-line
       handler: () => {
         //console.log('Cancelar');
       }

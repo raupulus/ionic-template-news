@@ -9,9 +9,10 @@ const apiKey = api.key;
 const apiDomain = api.domain;
 const apiVersion = api.version;
 const apiPath = api.path;
+const apiFile = api.file;
 
 const headers = new HttpHeaders({
-  'X-Api-key': apiKey,
+  'X-API-KEY': apiKey
 });
 
 @Injectable({
@@ -34,18 +35,22 @@ export class ApiService {
    * @param query Recibe la consulta como string.
    */
   private sendQuery<T>( query: string) {
-    let route = apiDomain;
-
-    if (apiVersion) {
-      route += '/' + apiVersion;
-    }
+    let route = 'https://' + apiDomain;
 
     if (apiPath) {
       route += '/' + apiPath;
     }
 
+    if (apiVersion) {
+      route += '/' + apiVersion;
+    }
+
+    if (apiFile) {
+      route += '/' + apiFile;
+    }
+
     //console.log(route + '/' + query);
-    return this.http.get<T>(route + '/' + query, { headers });
+    return this.http.get<T>(route + query, { headers });
   }
 
   /**
@@ -53,7 +58,7 @@ export class ApiService {
    */
   getAll() {
     this.currentPage++;
-    let query = `top-headlines?country=us&sortBy=publishedAt&page=${this.currentPage}`;
+    let query = `?&page=${this.currentPage}`;
     
     return this.sendQuery<PostsCollection>(query);
   }
@@ -70,7 +75,7 @@ export class ApiService {
       this.currentCategory = category;
     }
 
-    let query = `top-headlines?country=us&sortBy=publishedAt&category=${ category }&page=${ this.currentCategoryPage }`;
+    let query = `?&category=${ category }&page=${ this.currentCategoryPage }`;
 
     return this.sendQuery<PostsCollection>(query);
   }

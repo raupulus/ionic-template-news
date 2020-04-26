@@ -24,10 +24,10 @@ export class Tab1Page implements OnInit {
   loadPosts( event? ) {
     this.PostsService.getAll()
       .subscribe( (resp) => {
-        this.posts.push( ...resp.articles );
+        this.posts.push( ...resp.data );
 
         // Deshabilito el evento infinity-scroll si no vienen posts o se llegó al final.
-        if (resp.articles.length === 0) {
+        if (resp.data.length === 0) {
           event.target.disabled = true;
           event.target.complete();
         } else if ( event ) {
