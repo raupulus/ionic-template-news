@@ -49,7 +49,6 @@ export class ApiService {
       route += '/' + apiFile;
     }
 
-    //console.log(route + '/' + query);
     return this.http.get<T>(route + query, { headers });
   }
 
@@ -58,7 +57,7 @@ export class ApiService {
    */
   getAll() {
     this.currentPage++;
-    const query = `?&page=${this.currentPage}`;
+    const query = `?page=${this.currentPage}`;
 
     return this.sendQuery<PostsCollection>(query);
   }
@@ -75,7 +74,7 @@ export class ApiService {
       this.currentCategory = category;
     }
 
-    let query = `?&category=${ category }&page=${ this.currentCategoryPage }`;
+    const query = `?category=${ category }&page=${ this.currentCategoryPage }`;
 
     return this.sendQuery<PostsCollection>(query);
   }
@@ -84,7 +83,7 @@ export class ApiService {
    * Devuelve todas las categorías que existan.
    */
   getAllCategories() {
-    const query = `?&categories=true`;
+    const query = `?categories=true`;
 
     return this.sendQuery<CategoriesCollection>(query);
   }

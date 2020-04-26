@@ -34,7 +34,7 @@ export class Tab2Page implements OnInit {
         this.posts.push( ...resp.data );
 
         // Compruebo si se han traido artículos o si el evento ha terminado.
-        if (resp.data.length === 0) {
+        if ((resp.data.length === 0) && event) {
           event.target.disabled = true;
           event.target.complete();
         } else if ( event ) {
@@ -58,16 +58,17 @@ export class Tab2Page implements OnInit {
   /**
    * Obtiene del servidor todo el listado de categorías que existan.
    */
-  updateCategories() {
+  async updateCategories() {
     this.apiService.getAllCategories()
       .subscribe( resp => {
         this.categories.push( ...resp.data );
-      });
 
-    if (this.categories.length > 0) {
-      this.segment.value = this.categories[0].name;
-      console.log('log:', this.segment.value);
-    }
+        // Actualizo posts para esta categoría si es la primera vez que se entra.
+        if ((this.categories.length > 0) && !this.segment.value) {
+          this.segment.value = this.categories[0].name;
+          this.uploadNews( this.categories[0].id );
+        }
+    });
   }
 
   /**
