@@ -32,6 +32,9 @@ npm-debug.log*
 /src/environments/environment.prod.ts
 /src/environments/environment.ts
 
+# Ignorando Generados por cordova
+/resources/android
+/resources/ios
 
 # Archivos ignorados por ser reemplazados obligatoriamente.
 /resources/icon.png
@@ -39,3 +42,4 @@ npm-debug.log*
 /resources/splash.png
 /src/assets/icon/favicon.png
 /src/assets/identity
+/config.xml
