@@ -20,6 +20,12 @@ cp src/environments/environment.prod.ts.example src/environments/environment.pro
 - Rellenar los campos dentro de cada archivo de varibles de entorno tanto para
 producción como para desarrollo.
 
+### Añadir archivo de configuración para el proyecto
+
+``` 
+cp config.xml.example config.xml
+```
+
 ### Agregando entornos
 
 ## Añadiendo imágenes
