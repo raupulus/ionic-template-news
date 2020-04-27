@@ -26,6 +26,19 @@ producción como para desarrollo.
 cp config.xml.example config.xml
 ```
 
+### Crear
+
+Añadir en resources/android/xml/network_security_config.xml 
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">localhost</domain>
+    </domain-config>
+</network-security-config>
+```
+
 ### Agregando entornos
 
 ## Añadiendo imágenes
