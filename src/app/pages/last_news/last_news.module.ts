@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tab1Page } from './tab1.page';
+import { LastNews } from './last_news';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 
@@ -14,8 +14,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    RouterModule.forChild([{ path: '', component: Tab1Page }])
+    RouterModule.forChild([{ path: '', component: LastNews }])
   ],
-  declarations: [Tab1Page]
+  declarations: [LastNews]
 })
-export class Tab1PageModule {}
+export class LastNewsModule {}
