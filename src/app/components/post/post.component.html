@@ -2,17 +2,31 @@
   <ion-card-header>
       <ion-card-subtitle>
         <span class="title-1">
-          <span class="text-primary"> {{ index + 1 }}.</span>
-          <span class="post-source">{{ post.source.name }}</span>
+          <div>
+            <span class="post-source">{{ post.source.name }}</span>
+          </div>
+
+          <div class="box-title-url">
+            <span class="post-url">{{ post.source.url }}</span>
+          </div>
         </span>
 
+
+
+
+
+
         <div class="post-more-info">
+          <ion-icon slot="icon-only"
+                    name="information-circle"></ion-icon>
           <ion-button fill="clear"
                       (click)="openPostMenu()">
             <ion-icon slot="icon-only"
                       name="ellipsis-vertical-sharp"></ion-icon>
           </ion-button>
         </div>
+
+        
       </ion-card-subtitle>
 
       <ion-card-title (click)="openPost()">{{ post.title }}</ion-card-title>
@@ -23,8 +37,27 @@
             [src]="post.image"></ion-img>
 
   <ion-card-content>
+
+    <!-- Descripción -->
+
     <p>
       {{ post.description }}
     </p>
+
+    <!-- Metadatos -->
+    <p>
+      <span>
+        {{ post.categories[0].name }}
+      </span>
+    <p>
+
+    <!-- Autor -->
+    <p>
+      <span>
+        {{ post.author.name}} ( {{ post.author.username}} )
+      </span>
+    <p>
+
+
   </ion-card-content>
 </ion-card>
