@@ -3,11 +3,11 @@ import { LocalStorageService } from '../../services/local-storage.service';
 import { ComponentsModule } from '../../components/components.module';
 
 @Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss'],
+  selector: 'app-favorites',
+  templateUrl: 'favorites.page.html',
+  styleUrls: ['favorites.page.scss'],
 })
-export class Tab3Page {
+export class FavoritesPage {
 
   // Opciones para el slide.
   sliderOpts = {
