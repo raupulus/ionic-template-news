@@ -5,11 +5,11 @@ import { PostsCollection, Post } from 'src/app/interfaces/interfaces';
 
 @Component({
   selector: 'app-last_news',
-  templateUrl: 'last_news.html',
-  styleUrls: ['last_news.scss']
+  templateUrl: 'last_news.page.html',
+  styleUrls: ['last_news.page.scss']
 })
 
-export class LastNews implements OnInit {
+export class LastNewsPage implements OnInit {
 
   posts: Post[] = [];
 

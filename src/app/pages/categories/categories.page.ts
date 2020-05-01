@@ -5,11 +5,11 @@ import { PostsCollection, Post } from 'src/app/interfaces/interfaces';
 import { Category, CategoriesCollection } from '../../interfaces/interfaces';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-categories',
+  templateUrl: 'categories.page.html',
+  styleUrls: ['categories.page.scss']
 })
-export class Tab2Page implements OnInit {
+export class CategoriesPage implements OnInit {
 
   @ViewChild(IonSegment, {} as any) segment: IonSegment;
 
