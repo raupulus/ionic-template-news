@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from 'src/app/interfaces/interfaces';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { ActionSheetController, Platform } from '@ionic/angular';
+import { ActionSheetController, Platform, ModalController } from '@ionic/angular';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { ModalSiteInfoPage } from '../../pages/modals/modal-site-info/modal-site-info.page';
 
 @Component({
   selector: 'app-post',
@@ -19,7 +20,8 @@ export class PostComponent implements OnInit {
                private actionSheetCtrl: ActionSheetController,
                private socialSharing: SocialSharing,
                private localStorage: LocalStorageService,
-               private platform: Platform) { }
+               private platform: Platform,
+               private modalCtrl: ModalController) { }
 
   ngOnInit() {}
 
@@ -32,12 +34,32 @@ export class PostComponent implements OnInit {
   }
 
   /**
+   * Abre un modal con más información sobre el sitio de origen del post.
+   */
+  async sourceMoreInfo() {
+    const modal = await this.modalCtrl.create({
+      component: ModalSiteInfoPage,
+      componentProps: {
+        source: this.post.source
+      }
+
+    });
+
+    await modal.present();
+  }
+
+  /**
    * Abre las opciones que se pueden realizar sobre un post.
    */
   async openPostMenu() {
+    // Contiene las acciones para el ActionSheet.
+    var actions = {
+      buttons: []
+    };
+
     if (this.localStorage.posts.find(ele => ele.title === this.post.title) ) {
       var favorite = {
-        text: 'Borrar Favorito',
+        text: 'Borrar de Favorito',
         icon: 'trash',
         cssClass: 'action-sheet-dark',
         handler: () => {
@@ -55,17 +77,23 @@ export class PostComponent implements OnInit {
       };
     }
 
-    // Contiene las acciones para el ActionSheet.
-    var actions = {
-      buttons: [ 
-        favorite, 
-      ]
-    };
+    // Añado botón de más información sobre el origen del post.
+    actions.buttons.push({
+      text: 'Más Información del origen',
+      icon: 'information-circle',
+      cssClass: 'action-sheet-dark',
+      handler: () => {
+        this.sourceMoreInfo();
+      }
+    });
+
+    // Añade acciones para favorito.
+    actions.buttons.push(favorite);
 
     // Compruebo si puede compartir para añadir acción de compartir.
     if ( this.canSharePost() ) {
       actions.buttons.push({
-        text: 'Compartir',
+        text: 'Compartir Noticia',
         icon: 'share',
         cssClass: 'action-sheet-dark',
         handler: () => {
@@ -85,8 +113,6 @@ export class PostComponent implements OnInit {
         //console.log('Cancelar');
       }
     });
-
-    console.log('Actions: ', actions);
 
     const actionSheet = await this.actionSheetCtrl.create(actions);
     await actionSheet.present();

@@ -8,10 +8,10 @@ import { PostsComponent } from './posts/posts.component';
 @NgModule({
   declarations: [
     PostComponent,
-    PostsComponent
+    PostsComponent,
   ],
   exports: [
-    PostsComponent
+    PostsComponent,
   ],
   imports: [
     CommonModule,

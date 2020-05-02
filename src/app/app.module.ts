@@ -21,9 +21,14 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 // Módulo para almacenar datos en el storage
 import { IonicStorageModule } from '@ionic/storage';
 
+// Modales
+import { ModalSiteInfoPage } from './pages/modals/modal-site-info/modal-site-info.page';
+
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, ModalSiteInfoPage],
+  entryComponents: [
+    ModalSiteInfoPage
+  ],
   imports: [
     HttpClientModule,
     BrowserModule, 
