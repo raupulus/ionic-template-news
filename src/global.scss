@@ -60,3 +60,29 @@
 .tab-selected {
     color: var( --ion-color-primary );
 }
+
+/**
+ * Modales.
+ */
+
+// Caja para el título del modal. 
+.box-modal-title {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    font-size: 20px;
+    background-color: var( --ion-color-dark);
+    color: var( --ion-color-primary );
+}
+
+// Caja para la url en el título del modal.
+.modal-title-url {
+    font-size: 12px;
+    color: var( --ion-color-warning );
+}
+
+// Caja para el contenido del modal.
+.box-modal-content {
+    margin: 10px !important;
+    padding: 10px !important;
+}

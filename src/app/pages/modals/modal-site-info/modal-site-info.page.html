@@ -1,23 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
+    <ion-title class="box-modal-title">
       {{ source.name }}
-    </ion-title>
 
-    <p>
-      {{ source.url }}
+      <p *ngIf="source.domain" class="modal-title-url">
+      {{ source.domain }}
     </p>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <p>
-    imagen
-  </p>
+  <div class="box-modal-content">
+    <p *ngIf="source.image" class="box-modal-logo">
+      <ion-img src="source.image">
+      </ion-img>
+    </p>
 
-  <hr />
+    <hr />
 
-  <p>
-    {{ source.description }}  
-  </p>
+    <!-- Descripción -->
+    <p>
+      {{ source.description }}  
+    </p>
+
+    <!-- Botones -->
+    <p>
+      <ion-button color="danger" expand="full">Cerrar</ion-button>
+    </p>
+  </div>  
 </ion-content>

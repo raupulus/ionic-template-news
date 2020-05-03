@@ -11,7 +11,7 @@ export class ModalSiteInfoPage implements OnInit {
 
   private source: Source;
 
-  constructor(private params: NavParams) { 
+  constructor(private params: NavParams) {
     this.source = params.get('source');
     console.log('Source:', this.source);
   }
