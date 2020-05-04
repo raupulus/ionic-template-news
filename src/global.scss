@@ -30,6 +30,26 @@
  * Estilos Personalizados
  */
 
+.color-white {
+    color: #fff;
+}
+
+.color-primary {
+    color: var( --ion-color-primary );
+}
+
+.color-success {
+    color: var( --ion-color-success );
+}
+
+.color-warning {
+    color: var( --ion-color-warning );
+}
+
+.color-danger {
+    color: var( --ion-color-danger );
+}
+
  // Título principal, el más grande.
 .title-1 {
     color: var( --ion-color-primary );

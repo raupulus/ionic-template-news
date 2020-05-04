@@ -6,8 +6,9 @@
             <span class="post-source">{{ post.source.name }}</span>
           </div>
 
-          <div class="box-title-url">
-            <span class="post-url">{{ post.source.url }}</span>
+          <div *ngIf="post.source.domain"
+                class="box-title-url">
+            <span class="post-url">{{ post.source.domain }}</span>
           </div>
         </span>
 
@@ -33,19 +34,32 @@
     <!-- Descripción -->
 
     <p>
-      {{ post.description }}
+      {{ post.description }}...
+      
+      <br />
+
+      <span (click)="openPost()" class="post-read-more">
+        Leer más
+      </span>  
     </p>
 
     <!-- Metadatos -->
-    <p>
-      <span>
-        {{ post.categories[0].name }}
+    <p *ngIf="post.categories.length"
+        class="box-post-metadata">
+
+      <span *ngFor="let category of post.categories">
+        <ion-icon name="pricetags-outline"></ion-icon>
+        {{ category.name }}
       </span>
     <p>
 
     <!-- Autor -->
-    <p>
+    <p *ngIf="post.author.name && post.author.username"
+        class="box-post-author">
       <span>
+          Autor 
+          <br />
+          <ion-icon name="person-circle-outline"></ion-icon>
         {{ post.author.name}} ( {{ post.author.username}} )
       </span>
     <p>
