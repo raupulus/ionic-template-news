@@ -36,7 +36,7 @@ export class PostComponent implements OnInit {
   /**
    * Abre un modal con más información sobre el sitio de origen del post.
    */
-  async sourceMoreInfo() {
+  async modalSourceMoreInfo() {
     const modal = await this.modalCtrl.create({
       component: ModalSiteInfoPage,
       componentProps: {
@@ -83,7 +83,7 @@ export class PostComponent implements OnInit {
       icon: 'information-circle',
       cssClass: 'action-sheet-dark',
       handler: () => {
-        this.sourceMoreInfo();
+        this.modalSourceMoreInfo();
       }
     });
 

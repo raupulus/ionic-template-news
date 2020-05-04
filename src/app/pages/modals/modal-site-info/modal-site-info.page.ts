@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Source } from '../../../interfaces/interfaces';
-import { NavParams } from '@ionic/angular';
+import { NavParams, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal-site-info',
@@ -11,12 +11,19 @@ export class ModalSiteInfoPage implements OnInit {
 
   private source: Source;
 
-  constructor(private params: NavParams) {
+  constructor(private params: NavParams, private modalCtrl: ModalController) {
     this.source = params.get('source');
-    console.log('Source:', this.source);
   }
 
   ngOnInit() {
+  }
+
+  dismiss() {
+    // using the injected ModalController this page
+    // can "dismiss" itself and optionally pass back data
+    this.modalCtrl.dismiss({
+      'dismissed': true
+    });
   }
 
 }
