@@ -23,6 +23,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 // Modales
 import { ModalSiteInfoPage } from './pages/modals/modal-site-info/modal-site-info.page';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [AppComponent, ModalSiteInfoPage],
@@ -31,10 +32,12 @@ import { ModalSiteInfoPage } from './pages/modals/modal-site-info/modal-site-inf
   ],
   imports: [
     HttpClientModule,
-    BrowserModule, 
-    IonicModule.forRoot(), 
+    BrowserModule,
+    IonicModule.forRoot(),
     AppRoutingModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    ComponentsModule
+
   ],
   providers: [
     StatusBar,

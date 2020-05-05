@@ -12,7 +12,7 @@ export class FavoritesPage {
   // Opciones para el slide.
   sliderOpts = {
     allowSlidePrev: false,
-    allowSlideNext: false  
+    allowSlideNext: false
   };
 
 

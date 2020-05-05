@@ -1,17 +1,6 @@
-<ion-header [translucent]="true" no-border>
-  <ion-toolbar color="dark">
+<app-navbar title="Categorías"></app-navbar>
 
-    <ion-title>
-      <ion-item color="dark">
-        <ion-thumbnail slot="start">
-          <ion-img src="assets/identity/icon.png"></ion-img>
-        </ion-thumbnail>
-        <ion-label>Categorías</ion-label>
-      </ion-item>
-    </ion-title>
-
-  </ion-toolbar>
-
+<ion-content color="dark">
   <ion-segment scrollable 
                mode="md" 
                color="primary"
@@ -22,9 +11,6 @@
       <ion-label text-capitalize> {{ category.name }}</ion-label>
     </ion-segment-button>
   </ion-segment>
-</ion-header>
-
-<ion-content color="dark">
 
   <app-posts [posts]="posts"></app-posts>
 
