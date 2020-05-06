@@ -57,6 +57,7 @@ export interface Source {
     name: string;
     home: string;
     url: string;
+    image: string;
     description: string;
     admin_email: string;
 }

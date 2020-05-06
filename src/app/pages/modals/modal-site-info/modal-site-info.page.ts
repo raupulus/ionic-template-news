@@ -9,7 +9,7 @@ import { NavParams, ModalController } from '@ionic/angular';
 })
 export class ModalSiteInfoPage implements OnInit {
 
-  private source: Source;
+  public source: Source;
 
   constructor(private params: NavParams, private modalCtrl: ModalController) {
     this.source = params.get('source');

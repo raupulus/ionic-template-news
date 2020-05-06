@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ModalSiteInfoPage } from './modal-site-info.page';
 
 @NgModule({
   imports: [
@@ -12,6 +11,6 @@ import { ModalSiteInfoPage } from './modal-site-info.page';
     FormsModule,
     IonicModule,
   ],
-  declarations: [ModalSiteInfoPage]
+  declarations: []
 })
 export class ModalSiteInfoPageModule {}
